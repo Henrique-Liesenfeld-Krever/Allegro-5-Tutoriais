@@ -28,6 +28,10 @@ int main(void)
 
     int rodando = 1, situacao = 1;
 
+    char v[21];
+    for (int i = 0; i < 21; i++) v[i] = '\0';
+    int indice_v = 0;
+
     while (rodando) {
         while (!al_is_event_queue_empty(fila_eventos)) {
             ALLEGRO_EVENT evento;
@@ -47,6 +51,10 @@ int main(void)
                         situacao = 2;
                         break;
 
+                    case ALLEGRO_KEY_A:
+                        if (indice_v < 21)
+                            v[indice_v++] = evento.keyboard.keycode+64;
+                        break;
                 }
             }
         }
